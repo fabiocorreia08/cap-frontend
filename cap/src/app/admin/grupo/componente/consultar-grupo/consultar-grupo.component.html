@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="container"> 
+    <div class="row">      
+      <!--NavBar-->
+      <app-navbar></app-navbar>
+      <!-- conteudo -->
+
+      <div class="conteudo col-md-12" style="min-height: 580px; padding-bottom: 60px">        
+        <section class="col-md-12 margin-top-section">
+          <h4>Grupo</h4>
+        </section>
+        <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button (click)="fecharAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr class="my-4"> 
+        <div class="container">            
+              <!-- Corpo -->
+              <div class="row">                
+                <div class="col-md-9"></div>
+                <div class="col-md-1">
+                  <button id="consultar-grupo-migrar" type="button"
+                  (click)="migrarGrupo()"
+                  class="btn btn-primary btn-sm pull-md-right m-l-1">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> Migrar Grupo
+              </button>
+                </div>
+            </div>            
+        </div> 
+        <hr class="my-4">          
+            <br>
+            <section>
+              <div>
+                <p-table #dt1 [value]="grupos" dataKey="id"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers p-datatable-gridlines"
+                [paginator]="true">
+                    <ng-template pTemplate="header">
+                      <tr>                                               
+                        <th>Descrição Grupo</th>
+                        <th>Cógigo Equipamento</th> 
+                        <th>Nome Equipamento</th> 
+                        <th>Sequência</th>                                                 
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-grupo>
+                      <tr>                      
+                      <td>{{grupo.descricaoGrupo}}</td>
+                      <td>{{grupo.equipamento.codigoManutencao}}</td> 
+                      <td>{{grupo.equipamento.nomeEquipamento}}</td> 
+                      <td>{{grupo.codigoSequencia}}</td>                                      
+                      </tr>                    
+                    </ng-template>
+                  </p-table>
+              </div>
+            </section>
+      </div>  
+
+      <!-- Rodape -->
+    <app-footer></app-footer>
+    </div>
+</div>      
+

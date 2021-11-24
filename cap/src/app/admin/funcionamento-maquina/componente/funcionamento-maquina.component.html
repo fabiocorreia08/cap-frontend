@@ -1,0 +1,99 @@
+<app-header></app-header>
+<div class="container"> 
+    <div class="row">      
+      <!--NavBar-->
+      <app-navbar></app-navbar>
+      <!-- conteudo -->
+      <div class="conteudo col-md-12" style="min-height: 580px; padding-bottom: 60px">
+        
+        <section class="col-md-12 margin-top-section">
+          <h4>Calendário Equipamento</h4>
+        </section>
+        <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button (click)="fecharAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <hr class="my-4">        
+        <div class="container">
+          <div class="col-md-11 center-block pull-md-none margin-top-corpo">
+            <!-- Corpo -->
+            <div class="form-row align-items-center">
+             
+              <div class="col-auto">
+                <label class="sr-only" for="ano">Ano</label>
+                <input type="text" class="form-control mb-2" 
+                [(ngModel)]="funcionamentoMaquina.ano" [ngModelOptions]="{standalone: true}"
+                name="ano" placeholder="ano...">
+              </div> 
+              <div class="col-auto">
+                <label class="sr-only" for="mes">Mês</label>
+                <input type="text" class="form-control mb-2" 
+                [(ngModel)]="funcionamentoMaquina.mes" [ngModelOptions]="{standalone: true}"
+                name="mes" placeholder="mês...">
+              </div> 
+              <div class="col-auto">
+                <label class="sr-only" for="hora">Hora</label>
+                <input type="text" class="form-control mb-2" 
+                [(ngModel)]="funcionamentoMaquina.quantidadeHorasPadrao" [ngModelOptions]="{standalone: true}"
+                name="hora" placeholder="hora...">
+              </div> 
+              <div class="col-auto">
+                <label class="sr-only" for="matricula">Matrícula</label>
+                <input type="text" class="form-control mb-2" 
+                [(ngModel)]="funcionamentoMaquina.codigoUsuario" [ngModelOptions]="{standalone: true}"
+                name="matricula" placeholder="matricula...">
+              </div>                                            
+              <div class="col-auto">
+                <button (click)="gerarCalendarioFuncionamento()" class="btn btn-primary mb-2">Gerar Calendário</button>
+              </div>
+            </div> 
+            <hr class="my-4  ">          
+            <br>
+            <section>
+              <div>
+  
+                <p-table #dt1 [value]="funcionamentoMaquinas" dataKey="id"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers p-datatable-gridlines"
+                [paginator]="true">
+                    <ng-template pTemplate="header">
+                      <tr >
+                        <th >#</th>
+                        <th >Equipamento</th>
+                        <th >Centro de Custo</th>
+                        <th >Ano</th>
+                        <th >Mês</th>
+                        <th >Horas Padrão</th>                        
+                        <th>Última Alteração</th>
+                        <th>Data Alteração</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-funcionamentoMaquina>
+                      <tr >
+                      <td>{{funcionamentoMaquina.id}}</td>
+                      <td>{{funcionamentoMaquina.idEquipamento}}</td>
+                      <td>{{funcionamentoMaquina.centroCusto}}</td>
+                      <td>{{funcionamentoMaquina.ano}}</td>                      
+                      <td>{{funcionamentoMaquina.mes}}</td>
+                      <td>{{funcionamentoMaquina.quantidadeHorasPadrao}}</td>
+                      <td>{{funcionamentoMaquina.codigoUsuario}}</td>
+                      <td>{{funcionamentoMaquina.dataUltimaAlteracao | date:'dd/MM/yyyy'}}</td>                      
+                      </tr>                    
+                    </ng-template>
+                  </p-table>
+  
+              </div>
+            </section>
+
+            </div> 
+        </div>         
+                 
+      </div>      
+  
+    <!-- Rodape -->
+    <app-footer></app-footer>
+  
+    </div>
+  </div>
+  <!-- /.container -->

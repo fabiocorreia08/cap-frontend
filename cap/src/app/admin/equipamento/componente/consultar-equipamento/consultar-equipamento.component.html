@@ -1,0 +1,70 @@
+<app-header></app-header>
+<div class="container"> 
+    <div class="row">      
+      <!--NavBar-->
+      <app-navbar></app-navbar>
+      <!-- conteudo -->
+
+      <div class="conteudo col-md-12" style="min-height: 580px; padding-bottom: 60px">        
+        <section class="col-md-12 margin-top-section">
+          <h4>Equipamento</h4>
+        </section>
+        <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button (click)="fecharAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr class="my-4  "> 
+        <div class="container">
+            <!-- Corpo -->
+            <div class="row">                
+              <div class="col-md-9"></div>
+              <div class="col-md-1">
+                  <button id="consultar-equipamento-migrar" type="button"
+                      (click)="migrarEquipamento()"
+                      class="btn btn-primary btn-sm pull-md-right m-l-1">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i> Migrar Equipamento
+                  </button>
+              </div>
+          </div> 
+        </div> 
+        <hr class="my-4  ">          
+            <br>
+            <section>
+              <div>
+                <p-table #dt1 [value]="equipamentos" dataKey="id"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers p-datatable-gridlines"
+                [paginator]="true">
+                    <ng-template pTemplate="header">
+                      <tr >
+                        <th>#</th>
+                        <th>Codigo Manutenção</th>
+                        <th>Nome Equipamento</th>
+                        <th>Número Patrimonio</th>
+                        <th>Número Tensao</th>
+                        <th>Número Potencia</th>
+                        <th>Nome Tipo Potencia</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-equipamento>
+                      <tr >
+                      <td>{{equipamento.idEquipamento}}</td>
+                      <td>{{equipamento.codigoManutencao}}</td>
+                      <td>{{equipamento.nomeEquipamento}}</td>
+                      <td>{{equipamento.numeroPatrimonio}}</td>
+                      <td>{{equipamento.numeroTensao}}</td>
+                      <td>{{equipamento.numeroPotencia}}</td>
+                      <td>{{equipamento.nomeTipoPotencia}}</td>
+                      </tr>                    
+                    </ng-template>
+                  </p-table>
+              </div>
+            </section>
+
+      </div>  
+
+      <!-- Rodape -->
+    <app-footer></app-footer>
+    </div>
+</div>      

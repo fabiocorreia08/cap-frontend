@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container"> 
+    <div class="row">      
+      <!--NavBar-->
+      <app-navbar></app-navbar>
+      <!-- conteudo -->
+
+      <div class="conteudo col-md-12" style="min-height: 580px; padding-bottom: 60px">        
+        <section class="col-md-12 margin-top-section">
+          <h4>Grupo</h4>
+        </section>
+       
+        <hr class="my-4"> 
+        <div class="container">
+            <div class="col-md-11 center-block pull-md-none margin-top-corpo">
+              <!-- Corpo -->
+              <div class="form-row align-items-center">
+              <div class="col-auto">                
+                <label for="equipamento" class="control-label">Equipamento</label><br>
+                <select id="equipamento" name="equipamento">
+                  <option *ngFor="let equipamento of equipamentos"
+                  [value]="equipamento.idEquipamento">{{equipamento.codigoManutencao}}</option>
+                </select>  
+              </div>
+
+              <div class="col-auto">                
+                <label for="descricaoGrupo" class="control-label">Descrição Grupo</label><br>
+                <input type="text" class="form-control mb-2" 
+                [(ngModel)]="grupo.descricaoGrupo" [ngModelOptions]="{standalone: true}"
+                name="descricaoGrupo" placeholder="descricaoGrupo...">
+              </div>
+              </div>   
+            </div> 
+                      
+            <div class="row"> 
+               <!-- botões -->               
+              <div class="col-md-9"></div>
+              <div class="col-md-1">
+                <button id="consultar-grupo-novo" type="button"
+                    (click)="cancelar()"
+                    class="btn btn-primary btn-sm pull-md-right">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Voltar
+                </button>
+              </div>
+              <div class="col-md-1">
+                  <button id="consultar-grupo-novo" type="button"
+                      (click)="salvar()"
+                      class="btn btn-primary btn-sm pull-md-right">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i> Salvar
+                  </button>
+              </div>
+            </div>   
+        </div>
+            
+      </div>  
+
+      <!-- Rodape -->
+    <app-footer></app-footer>
+    </div>
+</div>      
+

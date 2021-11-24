@@ -1,0 +1,50 @@
+.color-header {
+    background-color: #6294b7;
+    font: #fff;    
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.margin-top-descricao-projeto {
+    margin-top: -1.8rem;
+}
+
+.margin-bottom-descricao-projeto {
+    margin-bottom: -1.1rem;
+}
+
+.height-header {   
+    line-height: 6;
+}
+
+.margin-logo {
+    margin-top: 1rem;
+    margin-right: 4rem;
+}
+
+.font-sair{    
+    font-size: 12px;
+}
+
+.font-usuario-info{
+    margin-top: 0.5rem;
+    color: #fff; 
+    font-size: 13px;
+    /*padding-left: -0.5rem;*/
+}
+
+.margin-sair {
+    margin-top: -3.5rem;
+    margin-bottom: -1rem;
+    padding-left: 0em!important;
+}
+
+
+
+
+
